@@ -23,13 +23,13 @@ export const chain = defaultChainId === 137 ? chainPolygon : chainAmoy;
 // --- TOKENS ---
 export const TOKENS = {
     AMOY: {
-        LEAP: "0xB63C2Ceda3461bd30b24Cd2ff355376637f8f48a", // Contrato DEFINITIVO LEAPt (Amoy) confirmed by Benjai
-        USDC: "0x8B0180f2101c8260d49339abfEe87927412494B4", // Confirmada por Benjai (Amoy Faucet)
+        LEAP: "0xB63C2Ceda3461bd30b24Cd2ff355376637f8f48a" as `0x${string}`, // Contrato DEFINITIVO LEAPt (Amoy) confirmed by Benjai
+        USDC: "0x8B0180f2101c8260d49339abfEe87927412494B4" as `0x${string}`, // Confirmada por Benjai (Amoy Faucet)
     },
     POLYGON: {
-        LEAP: "0x0000000000000000000000000000000000000000",
-        USDC: "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359", // Nativo Circle Polygon
-        USDT: "0xc2132D059Bc6f264f27AD288F897f540C6EBe8F", // Oficial Tether Polygon
+        LEAP: "0x0000000000000000000000000000000000000000" as `0x${string}`,
+        USDC: "0x3c499c542cEF5E3811e1192ce70d8cC03d5c3359" as `0x${string}`, // Nativo Circle Polygon
+        USDT: "0xc2132D059Bc6f264f27AD288F897f540C6EBe8F" as `0x${string}`, // Oficial Tether Polygon
     }
 };
 

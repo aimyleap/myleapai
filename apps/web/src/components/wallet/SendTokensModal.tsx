@@ -80,7 +80,7 @@ export function SendTokensModal({ isOpen, onClose }: SendTokensModalProps) {
                     client,
                     chain,
                 },
-                to: selectedLeaper.wallet_address,
+                to: selectedLeaper.wallet_address as `0x${string}`,
                 amount: amount,
             });
 
