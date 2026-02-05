@@ -13,9 +13,9 @@ export function useUserSync() {
             if (!account?.address || !wallet) return;
 
             const chainId = wallet.getChain()?.id;
-            const isSmart = !!account.admin;
+            const isSmart = !!(account as any).admin;
             const smartAddress = account.address.toLowerCase();
-            const signerAddress = account.admin?.address?.toLowerCase() || smartAddress;
+            const signerAddress = (account as any).admin?.address?.toLowerCase() || smartAddress;
 
             // La identidad "oficial" es siempre la Smart Wallet si existe, sino el Signer.
             const mainWalletAddress = smartAddress;
