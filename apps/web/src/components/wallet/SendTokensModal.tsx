@@ -10,7 +10,7 @@ import { sendAndConfirmTransaction } from "thirdweb";
 
 interface Leaper {
     id: string;
-    username: string | null;
+    username?: string | null;
     full_name: string | null;
     wallet_address: string | null;
     email: string | null;
