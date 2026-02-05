@@ -1,0 +1,13 @@
+{
+    "mcpServers": {
+        "supabase": {
+            "command": "cmd /c npx -y @supabase/mcp-server-supabase --access-token=sbp_812a2cf4560c070cbd0baf919b2a549f077752d9"
+        },
+        "thirdweb": {
+            "url": "https://api.thirdweb.com/mcp?secretKey=6LfOq2c3MvkD_AdhP-04_PawPIou3snU5RntiizJ95Oxnk2zkYgOL6zdr6hsyVb3rAlKbiMKOoNfld_WlsGmtA"
+        },
+        "notebooklm": {
+            "command": "cmd /c npx -y @roomi-fields/notebooklm-mcp@latest"
+        }
+    }
+}
