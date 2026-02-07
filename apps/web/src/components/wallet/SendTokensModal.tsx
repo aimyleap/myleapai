@@ -42,14 +42,12 @@ export function SendTokensModal({ isOpen, onClose }: SendTokensModalProps) {
             setIsSearching(true);
             console.log("🔍 Buscando Leapers con:", searchQuery);
 
-            // Intentamos buscar por full_name y email (columnas confirmadas en useUserSync)
-            // Agregamos wallet_address también por si el usuario pega una dirección.
-            // Intentamos buscar por full_name, email o wallet_address exacto/parcial
+            // Intentamos buscar por full_name, email o wallet_address
             const { data, error } = await supabase
                 .from("profiles")
                 .select("id, full_name, wallet_address, email")
-                .or(`full_name.ilike.%${searchQuery}%,email.ilike.%${searchQuery}%,wallet_address.eq.${searchQuery},wallet_address.ilike.%${searchQuery}%`)
-                .limit(5);
+                .or(`full_name.ilike.%${searchQuery}%,email.ilike.%${searchQuery}%,wallet_address.ilike.%${searchQuery}%`)
+                .limit(10);
 
             if (error) {
                 console.error("❌ Error en búsqueda Supabase:", error);
@@ -57,8 +55,11 @@ export function SendTokensModal({ isOpen, onClose }: SendTokensModalProps) {
                 setStatus("error");
             } else if (data) {
                 console.log("✅ Leapers encontrados:", data.length);
-                // Filtrar para no mostrarse a sí mismo si se conoce la dirección
-                setLeapers(data.filter(l => l.wallet_address?.toLowerCase() !== account?.address?.toLowerCase()));
+                // Filtrar para no mostrarse a sí mismo (revisando wallet address)
+                const filteredLeapers = data.filter(l => {
+                    return l.wallet_address?.toLowerCase() !== account?.address?.toLowerCase();
+                });
+                setLeapers(filteredLeapers);
             }
             setIsSearching(false);
         };

@@ -1,9 +1,14 @@
 "use client";
 
 import { client, chainAmoy, chainPolygon, chain, SUPPORTED_TOKENS } from "@/lib/thirdweb";
-import { ConnectButton } from "thirdweb/react";
+import dynamic from "next/dynamic";
 import { createWallet, inAppWallet } from "thirdweb/wallets";
 import Link from "next/link";
+
+const ConnectButton = dynamic(
+    () => import("thirdweb/react").then((mod) => mod.ConnectButton),
+    { ssr: false }
+);
 
 const wallets = [
     inAppWallet({
